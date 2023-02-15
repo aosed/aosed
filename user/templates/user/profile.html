@@ -1,0 +1,94 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<style>
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      weight:100%;
+    }
+    
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      background-color: #F2F2F2;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px #BDBDBD;
+      padding: 50px;
+     margin-top: 0px;
+    }
+    
+    .profile-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      margin-bottom: 30px;
+    }
+    
+    .profile-card h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    
+    .profile-card p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    
+    .profile-card .btn {
+      width: 200px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .profile-card .btn:hover {
+      background-color: #3E8E41;
+    }
+ 
+    </style>
+    
+    <div class="container my-5">
+        <div class="profile-card">
+          <img src="{{user.profile.image.url}}" alt="{{user.username}}">
+          <h3>{{user.username}}</h3>
+          <p>{{user.first_name}} {{user.last_name}}</p>
+          <p>{{user.email}}</p>
+          <a class="btn" href="{% url 'profile_update' %}">تحرير البروفايل</a>
+        </div>
+       
+      </div>
+      <div class="col-9">
+        <h3 class="border-bottom pb-3 mb-3">المنشورات ({{posts.count}})</h3>
+        {% for post in post_list %}
+          <div class="media mb-3">
+            
+            <img class="img-fluid rounded-circle " style="width: 60px; height: 60px; margin: 8px;"
+            src="{{post.author.profile.image.url}}" alt="صورة الناشر">
+            <div class="media-body">
+                <h3>{{user.username}}</h3>
+              <a href="{% url 'detail' post.id %}"><h5 class="mt-0">{{post.title}}</h5></a>
+              <p>{{post.content|truncatewords:30}}</p>
+            </div>
+          </div>
+          <hr>
+        {% empty %}
+          <p>لا يوجد منشورات</p>
+        {% endfor %}
+        {% include 'blog/pagination.html' with page=post_list %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

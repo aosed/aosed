@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+ <div class="container my-5">
+    <div class="row">
+      <div class="col-3 ">
+       <div style="margin-left: 70px;">  <img class="img-fluid rounded-circle border " style="width: 120px; height:120px; " src="{{user.profile.image.url}}" alt="{{user.username}}"> </div>
+        <h3 class="text-center mt-3">{{user.username}}</h3>
+        <p class="text-center">{{user.first_name}} {{user.last_name}}</p>
+        <p class="text-center">{{user.email}}</p>
+       <!-- <a class="btn btn-primary btn-block mt-2" href="{% url 'profile_update' %}">تحرير البروفايل</a>-->
+      </div>
+      <div class="col-9">
+        <div class="form-container bg-light p-5 rounded">
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                {{user_form|crispy}}
+                <div class="form-group">
+                    <label for="image" class="btn btn-outline-secondary mt-2">اختيار الصورة</label>
+                    <input type="file" name="image" id="image" accept="image/*" style="display: none">
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">حفظ</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
