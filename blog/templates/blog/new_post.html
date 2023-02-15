@@ -1,0 +1,74 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<style>
+    .post-container {
+      width: 500px;
+      margin: 20px auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+  
+    .header {
+      background-color: #3b5998;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  
+    .header h1 {
+      margin: 0;
+      font-size: 18px;
+    }
+  
+    .post-body {
+      padding: 10px;
+    }
+  
+    .post-thumbnail {
+      width: 100%;
+      height: 200px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-bottom: 10px;
+    }
+  
+    .post-content {
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: justify;
+      padding: 10px;
+    }
+  
+    .post-footer {
+      background-color: #f6f6f6;
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+  <form method="POST" enctype="multipart/form-data">
+  <div class="post-container">
+    <div class="header">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </div>
+    <div class="post-body">
+    <!--  <div class="post-thumbnail" style="background-image: url(https://via.placeholder.com/500x200);"></div>-->
+    </div>
+   
+  </div>
+  
+
+
+   <!--  <legend class="border-bottom pb-1 mb-3" style="font-size:24px; font-weight:600; margin-bottom:20px;">تدوينة جديدة</legend>-->
+   
+    <div style="width:100%; display:flex; flex-direction:column; align-items:center;">
+     
+    </div>
+    <button style="margin-top:50px; width:100%; background-color:#ffffff; color:#080710; padding:15px 0; font-size:18px; font-weight:600; border-radius:5px; cursor:pointer;">نشر</button>
+  </form>
+
+{% endblock content %}

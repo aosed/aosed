@@ -1,0 +1,87 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<style>
+   
+  </style>
+  
+   
+
+<div class=" text-center" class="post " id="post" >
+ 
+  <div class="card" id="po"  >
+    <div class="options-button float-right">
+      
+      <div class="dropdown" >
+      <div class="dropdown" class="">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="optionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              الخيارات
+          </button>
+          <div class="dropdown-menu" aria-labelledby="optionsDropdown">
+              {% if post.author == user %}
+                  <a class="dropdown-item" href="{% url 'post-update' post.id %}">تحرير</a>
+                  <a class="dropdown-item" href="{% url 'post-delete' post.id %}">حذف</a>
+              {% endif %}
+          </div>
+      </div>
+  </div>
+  </div>
+    <img class="img-fluid rounded-circle border m-2 text-center" style="width: 70px; height:70px; display:inline-block;"
+    src="{{ post.author.profile.image.url }}" alt="Author's Image">
+         <h3>{{post.author.username}}</h3>
+    <div class="card-body" id="card" >
+      <h5 class="card-title">
+        <a href="{% url 'detail' post.id %}" style="color: antiquewhite;">{{ post.title }}</a>
+      </h5>
+      <p class="card-text" ;">{{ post.content }}</p>
+      <button class="like-button" data-post-id="{{ post.id }}">
+        {% if post.is_liked %}Unlike{% else %}Like{% endif %}
+      </button>
+      <span class="total-likes" >{{ post.total_likes }}</span>
+      
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Published on {{ post.post_date|date:'d-m-Y' }}</small>
+    </div>
+    <a href="#" id="show-comments" class="btn btn-success">({{comments.count}}) <i class="fas fa-comments"> </i>تعليقات </a>
+
+<div id="comments-section" style="display: none;">
+ 
+    <ul class="list-group">
+       {% for comment in comments %}
+          <li class="list-group-item">{{ comment.body }}<br>
+          <small class="text-muted">بواسطة {{ comment.name }} في {{ comment.comment_date }}</small>
+          </li>
+       {% empty %}
+          <li class="list-group-item">لا يوجد تعليقات</li>
+       {% endfor %}
+      
+        <div class="">
+            <form method="POST">
+                {% csrf_token %}
+                {{comment_form|crispy}}
+                {% if user.is_authenticated %}
+                    <input type="hidden" name="name" value="{{ user.username }}">
+                    <input type="hidden" name="email" value="{{ user.email }}">
+                {% endif %}
+                <input class="btn btn-secondary" type="submit" value="نشر التعليق">
+            </form>
+        </div>
+        </li>
+    </ul>
+    <script>
+        document.getElementById('show-comments').addEventListener('click', function() {
+           document.getElementById('comments-section').style.display = 'block';
+        });
+     </script>
+     
+  </div>
+</div>
+
+
+
+ </div>
+ 
+
+{% endblock content %}

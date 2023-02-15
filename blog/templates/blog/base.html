@@ -1,0 +1,162 @@
+{% load static %}
+{% load post_tag %}
+<!DOCTYPE html>
+
+<html lang="ar">
+    
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% if title %}
+    <title>مدونة | {{title}}</title>
+    {% else %}
+    <title>مدونة</title>
+    {% endif %}
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/register.css' %}">
+   
+    <link rel="shortcut icon" href="{% static 'blog/images/favicon.ico' %}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <style>
+    #bar{color: #ffffff;}
+
+    </style>
+</head>
+
+<body>
+    <form action="{% url 'search' %}" method="get" style="width: 100%;">
+        <div class="input-group">
+            <input type="text" name="query" placeholder="Search..." class="form-control">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-primary">Search</button>
+            </div>
+        </div>
+    </form>
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-light " id="bar">
+    
+    <a class="navbar-brand" href="{% url 'home' %}" style="color: #ffffff;">
+        
+        <img src="{% static 'blog/images/mim-logo.png' %}" width="30" height="30" alt="logo">
+        BlngoPost |
+    </a>
+    <button id="bar"  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" id="bar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}"  id="bar">الرئيسية</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}" id="bar">عن المدونة</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'new_post' %}" id="bar">إنشاء مدخل جديد</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}" id="bar">حسابي</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}" id="bar">تسجيل الخروج</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}" id="bar">تسجيل الدخول</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}" id="bar">التسجيل</a>
+            </li>
+            {% endif %}
+        </ul>
+    
+                                              
+
+                    </nav>
+                    {% if user.is_authenticated %}
+                    <div class="navbar-nav ml-auto" id="mm">
+                        <div class="dropdown" >
+                            <button class="btn " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #ffffff; border: solid 0px;">
+                                <i class="fas fa-bell"  ></i> 
+                                {% if messages %}
+                                <span class="badge badge-danger" >{{ messages|length }}</span>
+                                {% endif %}
+                                </button>
+                                {% if messages %}
+                                <div class="dropdown-menu"  >
+                                {% for message in messages %}
+                                <a class="dropdown-item" href="#" >{{ message }}</a>
+                                {% endfor %}
+                                </div>
+                                {% else %}
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">لا يوجد إشعارات</a>
+                                </div>
+                                {% endif %}
+                                </div>
+                                </div>
+                                {% endif %}
+                                </div>
+                                <script>
+                                    $(document).ready(function(){
+                                      $("#mm .dropdown").click(function(){
+                                        $(".dropdown-menu").slideToggle("fast");
+                                      });
+                                    });
+                                    </script>
+            
+
+
+
+        <div class="main" >
+            <div class="main" >
+                <div class="main">
+                    {% block content %}
+
+                    {% endblock content %}
+                </div>
+            </div>
+        </div> 
+ 
+
+    <footer class="bg-secondary align-content-end" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md align-items-end">
+                    <div class="card-group mt-3">
+                  
+                        <div class="card m-3">
+                            <h3 class="card-title text-center border-bottom p-2 m-3">وسائل التواصل الاجتماعي</h3>
+                            <h4 class="card-body text-center">
+                                <a class="text-secondary" href=""><i class="fab fa-facebook"></i></a>
+                                <a class="text-secondary" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="text-secondary" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="text-secondary" href=""><i class="fab fa-youtube"></i></a>
+                                <a class="text-secondary" href=""><i class="fab fa-telegram"></i></a>
+                                <a class="text-secondary" href=""><i class="fab fa-linkedin"></i></a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-md text-center">
+                    <small class="text-light">&copy; جميع الحقوق محفوظة {% now 'Y' %}</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'blog/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'blog/js/popper.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/fontawesome-all.min.js' %}"></script>
+
+</body>
+
+</html>

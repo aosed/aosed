@@ -1,0 +1,18 @@
+<div class="comments-section">
+    <h3 class="border-bottom pb-3 mb-3">التعليقات ({{ comments.count }})</h3>
+    <div class="row">
+      {% for l_comment in comments %}
+        <div class="col-12 mb-3">
+          <a href="{% url 'detail' l_comment.post.id %}">
+            <p class="mb-2">{{ l_comment.body|slice:'45'|default:l_comment.body }}...</p>
+            <p class="text-secondary small">{{ l_comment.post.title }}</p>
+          </a>
+        </div>
+      {% endfor %}
+      {% if comments.count == 0 %}
+      <div class="col-12">
+        <p>لا توجد تعليقات حتى الآن.</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>

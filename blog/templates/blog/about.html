@@ -1,0 +1,82 @@
+
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div style="height: 5px;"></div>
+    <div class="contact" style="margin-top: 100px;" >
+      <main>
+        <section >
+          <div class="content">
+            <img src="{% static 'blog/images/my.png' %}" alt="Profile Image">
+  
+            <aside>
+              <h1>Mohamed Zaki </h1>
+              <p>Hello, I am Mohamed Zaki, a web developer</p>
+            </aside>
+            
+            <button  style="background-color: #abaeae;" >
+              <span class="" style="background-color: #abaeae;">Contact Me</span>
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"> <g class="nc-icon-wrapper" fill="#444444"> <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path> </g> </svg>
+            </button >
+          </div>
+  
+          <div class="title thead-light  " ><p >Contact Me</p></div>
+        </section>
+  
+        
+      </main>
+  
+      <nav>
+        <a href="#" class="gmail">
+          <div class="icon">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M16 3v10c0 .567-.433 1-1 1h-1V4.925L8 9.233 2 4.925V14H1c-.567 0-1-.433-1-1V3c0-.283.108-.533.287-.712C.467 2.107.718 2 1 2h.333L8 6.833 14.667 2H15c.283 0 .533.108.713.288.179.179.287.429.287.712z" fill-rule="evenodd"/></svg>
+          </div>
+  
+          <div class="content float-left" >
+            <h1>Email</h1>
+            <span>2017aosed@gmail.com</span>
+          </div>
+          
+          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"> <g class="nc-icon-wrapper" fill="#444444"> <path d="M17.17 32.92l9.17-9.17-9.17-9.17L20 11.75l12 12-12 12z"></path> </g> </svg>
+        </a>
+ 
+        <a href="#" class="facebook">
+          <div class="icon">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"/></svg>
+          </div>
+  
+          <div class="content float-left">
+            <h1>Facebook</h1>
+            <span>@AOSED.SHAM</span>
+          </div>
+          
+          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"> <g class="nc-icon-wrapper" fill="#444444"> <path d="M17.17 32.92l9.17-9.17-9.17-9.17L20 11.75l12 12-12 12z"></path> </g> </svg>
+        </a>
+  
+        <a href="#" class="whatsapp">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="#00e676" d="M12.02 0C5.37 0 .01 5.36.01 12.02c0 2.13.74 4.08 2.03 5.58L2 24l5.97-2.56A11.944 11.944 0 0 0 12.02 24c6.66 0 12.01-5.36 12.01-12.02S18.68 0 12.02 0zm4.48 15.98c-.94 2.6-3.67 4.35-6.62 4.35-3.96 0-7.16-2.13-8.07-5.07-.67-1.97-.02-4.03 1.31-5.43 1.08-.99 2.58-1.47 4.22-1.47 1.42 0 2.77.43 3.83 1.24L16 12.92V8.72c0-.67-.07-1.34-.2-1.98-.33-1.36-1.2-2.53-2.43-3.2a6.463 6.463 0 0 1-2.23-3.86C10.2 3.3 9.05 2.37 7.67 2.37c-2.6 0-4.73 2.13-4.73 4.73 0 .67.1 1.32.28 1.93.2.86.7 1.65 1.44 2.22.93.7 2.05 1.07 3.22 1.07 1.58 0 2.97-.57 4.05-1.53l1.39 1.45a9.808 9.808 0 0 0 5.03-6.53c.05-.47.08-.94.08-1.41-.02-3.96-3.24-7.19-7.2-7.19z"/></svg>
+          </div>
+  
+          <div class="content float-left">
+            <h1>WhatsApp</h1>
+            <span>+905395461815</span>
+          </div>
+          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"> <g class="nc-icon-wrapper" fill="#444444"> <path d="M17.17 32.92l9.17-9.17-9.17-9.17L20 11.75l12 12-12 12z"></path> </g> </svg>
+
+        </a>
+
+      </nav>
+    </div>
+
+  <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script>$('button').click(function(){
+        $('button').toggleClass('active');
+        $('.title').toggleClass('active');
+        $('nav').toggleClass('active');
+      });</script>
+  <div style="height: 550px;"></div>
+{% endblock content %}
